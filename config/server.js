@@ -23,12 +23,14 @@ const {
  * @param {*} app Basic Express app
  */
 const server = async (app) => {
+    app.use('/uploads/kogoro', express.static(__dirname + '/uploads/kogoro'));
+
     app.set('port', port);
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(morgan(morganMode));
     app.use(cors());
-    app.use('/', routes);
+    app.use('/kogoro', routes);
 }
 
 module.exports = server;
